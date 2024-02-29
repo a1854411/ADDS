@@ -14,4 +14,6 @@ int main (){
     Referee ump;
 
     Player* winner = ump.refGame(human,Mac);
+
+    std::cout << winner->getName() << "wins";
 }
