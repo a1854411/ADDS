@@ -13,7 +13,13 @@ int main (){
 
     Referee ump;
 
+
     Player* winner = ump.refGame(human,Mac);
 
-    std::cout << winner->getName() << "wins";
+    if (winner == nullptr){
+        std::cout << "Its a tie" << std::endl;
+        return 0;
+    }
+
+    std::cout << winner->getName() << " wins" << std::endl;
 }

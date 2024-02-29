@@ -10,7 +10,7 @@ Player * Referee::refGame(Player * player1, Player * player2){
         return nullptr; //tie
     }
 
-    if (move1 == 'R' && move2 == 'S' || move1 == 'S' && move2 == 'P' || move1 == 'P' && move2 == 'R'){
+    if ((move1 == 'R' && move2 == 'S') || (move1 == 'S' && move2 == 'P') || (move1 == 'P' && move2 == 'R')){
         return player1; //player1 wins
     }
 
