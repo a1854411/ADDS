@@ -4,7 +4,7 @@ Referee::Referee(){}
 
 Player * Referee::refGame(Player * player1, Player * player2){
     char move1 = player1->makeMove();
-    char move2 = player1->makeMove();
+    char move2 = player2->makeMove();
 
     if (move1 == move2){
         return nullptr; //tie
