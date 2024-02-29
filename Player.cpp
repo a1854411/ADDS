@@ -1,7 +1,12 @@
 #include <iostream>
+#include <string>
 #include "Player.h"
 
-Player::char makeMove(){
-    
-
+char Player::makeMove(){
+    return ' ';
 }
+
+std::string Player::getName(){
+    return " ";
+}
+

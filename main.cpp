@@ -5,11 +5,13 @@
 
 int main (){
 
-    Human Human("Mei");
-    Computer Computer;
-    Referee Referee;
-
-    Player* winner = 
-
+    Human *human;
+    human = new Human("Mei");
     
+    Computer *Mac;
+    Mac= new Computer;
+
+    Referee ump;
+
+    Player* winner = ump.refGame(human,Mac);
 }

@@ -1,13 +1,14 @@
+#include <iostream>
+#include "Player.h"
+
 #ifndef HUMAN_H
 #define HUMAN_H
-
-#include <iostream>
 
 class Human : public Player{
     private:
         std::string name;
     public:
-        Human(std::string name = "Human");
+        Human(std::string name);
         char makeMove() override;
         std::string getName() override;   
 };
