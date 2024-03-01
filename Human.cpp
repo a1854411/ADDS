@@ -1,9 +1,15 @@
 #include <iostream>
 #include "Human.h"
 
-Human::Human(std::string name) {
+using namespace std;
+
+Human::Human(){
+    this->name = "Human";
+}
+
+Human::Human(std::string inputname) {
     // Initialize member variable with the provided name
-    this->name = name;
+    this->name = inputname;
 }
 
 std::string Human::getName(){
@@ -12,7 +18,7 @@ std::string Human::getName(){
 
 char Human::makeMove(){
     char move;
-    std::cout << "Enter move:";
-    std::cin >> move;
+    cout << "Enter move:";
+    cin >> move;
     return move;
 }
