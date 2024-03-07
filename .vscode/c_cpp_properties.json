@@ -3,14 +3,15 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "*.*"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": ""
+            "compilerPath": "C:\\Users\\hcore\\Desktop\\ucrt64\\bin\\gcc.exe"
         },
         {
             "name": "ok",
