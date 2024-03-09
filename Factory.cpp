@@ -37,4 +37,5 @@ Move* Factory::move_obj(std::string move){
         if (move == "Robot") {
             return new Robot;
         }
+        else{return nullptr;}
     }
