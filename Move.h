@@ -10,7 +10,7 @@ class Move {
     std::string move;
    
     public:
-    std::string getMove();
+    std::string getName();
     void setMove(std::string chosen_move);
 
     std::vector<std::string> weak_against;
