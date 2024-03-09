@@ -1,11 +1,11 @@
 #include <iostream>
 #include "Computer.h"
-
+#include "Factory.h"
 
 std::string Computer::getName(){
     return "Computer";
 } 
 
-Moves* Computer::makeMove(){
-    return (new Factory())->getMove("Rock");
+Move* Computer::makeMove(){
+    return (new Factory())->move_obj("Rock");
 }

@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Player.h"
-#include "Moves.h"
+#include "Move.h"
 
 using namespace std;
 
@@ -13,8 +13,8 @@ class Human : public Player{
     public:
         Human();   
         Human(std::string name);
-        std::string getName();
-        Moves* makeMove();
+        std::string getName() override;
+        Move* makeMove() override;
         ~Human();   
 };
 

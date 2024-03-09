@@ -1,12 +1,12 @@
 #include <string>
 #include <vector>
-#include "Moves.h"
+#include "Move.h"
 using namespace std;
 
 #ifndef PIRATE_H
 #define PIRATE_H
 
-class Pirate : public Moves {
+class Pirate : public Move {
     public:
     Pirate();
     ~Pirate();   

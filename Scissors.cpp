@@ -1,5 +1,5 @@
 #include "Scissors.h"
-#include "Moves.h"
+#include "Move.h"
 
 Scissors::Scissors(){
         setMove("Scissors");

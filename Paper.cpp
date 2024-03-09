@@ -1,5 +1,5 @@
 #include "Paper.h"
-#include "Moves.h"
+#include "Move.h"
 
 Paper::Paper(){
         setMove("Paper");

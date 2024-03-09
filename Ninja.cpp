@@ -1,5 +1,5 @@
 #include "Ninja.h"
-#include "Moves.h"
+#include "Move.h"
 
 Ninja::Ninja(){
         setMove("Ninja");

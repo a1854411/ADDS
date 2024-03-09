@@ -1,6 +1,6 @@
 #include <string>
 #include <vector>
-#include "Moves.h"
+#include "Move.h"
 #include "Zombie.h"
 using namespace std;
 

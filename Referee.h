@@ -1,10 +1,10 @@
-#include <iostream>
+#include <string>
+#include <vector>
 #include "Player.h"
+#include "Move.h"
 
 #ifndef REFEREE_H
 #define REFEREE_H
-
-#include <iostream>
 
 class Referee{
     public:

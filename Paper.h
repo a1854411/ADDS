@@ -1,12 +1,12 @@
 #include <string>
 #include <vector>
-#include "Moves.h"
+#include "Move.h"
 using namespace std;
 
 #ifndef PAPER_H
 #define PAPER_H
 
-class Paper : public Moves {
+class Paper : public Move {
     public:
     Paper();
     ~Paper();   

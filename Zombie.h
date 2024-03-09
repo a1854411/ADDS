@@ -1,12 +1,12 @@
 #include <string>
 #include <vector>
-#include "Moves.h"
+#include "Move.h"
 using namespace std;
 
 #ifndef ZOMBIE_H
 #define  ZOMBIE_H
 
-class Zombie : public Moves {
+class Zombie : public Move {
     public:
     Zombie();
     ~Zombie();   

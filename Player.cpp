@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Player.h"
-#include "Moves.h"
+#include "Move.h"
 
 std::string Player::getName(){
     return " ";

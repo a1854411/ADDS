@@ -1,5 +1,5 @@
 #include "Rock.h"
-#include "Moves.h"
+#include "Move.h"
 
 Rock::Rock(){
         setMove("Rock");

@@ -1,4 +1,5 @@
-#include <iostream>
+#include <string>
+#include <vector>
 #include "Player.h"
 
 #ifndef COMPUTER_H
@@ -6,8 +7,9 @@
 
 class Computer : public Player{
     public:
-        char makeMove() override;
-        std::string getName() override;   
+        Move* makeMove() override;
+        std::string getName() override;  
+        ~Computer(); 
 };
 
 #endif

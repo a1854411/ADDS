@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "Moves.h"
+#include "Move.h"
 
 #ifndef PLAYER_H
 #define PLAYER_H
@@ -9,11 +9,9 @@ class Player{
     private:
         std::string name;
     public:
-        virtual Moves* makeMove();
+        virtual Move* makeMove();
         virtual std::string getName();
-        virtual  void setName(std::string name);
-    
+        virtual  void setName(std::string name); 
 };
-
 
 #endif

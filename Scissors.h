@@ -1,12 +1,12 @@
 #include <string>
 #include <vector>
-#include "Moves.h"
+#include "Move.h"
 using namespace std;
 
 #ifndef SCISSORS_H
 #define SCISSORS_H
 
-class Scissors : public Moves {
+class Scissors : public Move {
     public:
     Scissors();
     ~Scissors();   

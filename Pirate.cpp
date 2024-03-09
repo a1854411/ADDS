@@ -1,5 +1,5 @@
 #include "Pirate.h"
-#include "Moves.h"
+#include "Move.h"
 
 Pirate::Pirate(){
         setMove("Pirate");

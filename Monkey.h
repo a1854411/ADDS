@@ -1,12 +1,12 @@
 #include <string>
 #include <vector>
-#include "Moves.h"
+#include "Move.h"
 using namespace std;
 
 #ifndef MONKEY_H
 #define MONKEY_H   
 
-class Monkey : public Moves {
+class Monkey : public Move {
     public:
     Monkey();
     ~Monkey();   

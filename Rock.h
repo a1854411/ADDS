@@ -1,12 +1,12 @@
 #include <string>
 #include <vector>
-#include "Moves.h"
+#include "Move.h"
 using namespace std;
 
 #ifndef ROCK_H
 #define ROCK_H
 
-class Rock : public Moves {
+class Rock : public Move {
     public:
     Rock();
     ~Rock();   
