@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include "Human.h"
+#include "Moves.h"
+#include "Factory.h"
 
 using namespace std;
 
@@ -9,7 +11,6 @@ Human::Human(){
 }
 
 Human::Human(std::string inputname) {
-    // Initialize member variable with the provided name
     this->name = inputname;
 }
 
@@ -17,9 +18,9 @@ std::string Human::getName(){
     return name;
 } 
 
-char Human::makeMove(){
-    char move;
+Moves* Human::makeMove(){
+    std::string move;
     cout << "Enter move:";
     cin >> move;
-    return move;
+    return (new Factory::Factory())->getMove(move);
 }

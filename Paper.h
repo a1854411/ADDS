@@ -3,13 +3,13 @@
 #include "Moves.h"
 using namespace std;
 
-#ifndef NINJA_H
-#define NINJA_H
+#ifndef PAPER_H
+#define PAPER_H
 
-class Ninja : public Moves {
+class Paper : public Moves {
     public:
-    Ninja();
-    ~Ninja();   
+    Paper();
+    ~Paper();   
 };
 
 #endif

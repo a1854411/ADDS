@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Player.h"
+#include "Moves.h"
 
 using namespace std;
 
@@ -10,10 +11,11 @@ class Human : public Player{
     private:
         std::string name;
     public:
-        Human(std::string name);
-        char makeMove();
-        std::string getName();
         Human();   
+        Human(std::string name);
+        std::string getName();
+        Moves* makeMove();
+        ~Human();   
 };
 
 #endif

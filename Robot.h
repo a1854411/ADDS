@@ -8,13 +8,7 @@ using namespace std;
 
 class Robot : public Moves {
     public:
-    Robot(){
-        setMove("Robot");
-        weak_against = { "Pirate", "Monkey"};
-        strong_against = { "Zombie", "Ninja" };
-        draw_against = { "Robot" };
-    }
-   
+    Robot();
     ~Robot();   
 };
 
