@@ -11,7 +11,7 @@ class Player{
     private:
         std::string name;
     public:
-        virtual Move* makeMove();
+        virtual Move* makeMove() = 0;
         virtual std::string getName();
         virtual  void setName(std::string name); 
 };

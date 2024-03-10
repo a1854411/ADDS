@@ -12,7 +12,6 @@ using namespace std;
 class Factory {
     public:
         Move* move_obj(std::string move);
-        ~Factory();
 };
 
 #endif

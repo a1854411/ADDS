@@ -15,8 +15,7 @@ class Human : public Player{
         Human();   
         Human(std::string name);
         std::string getName() override;
-        Move* makeMove() override;
-        ~Human();   
+        Move* makeMove() override;  
 };
 
 #endif
