@@ -20,7 +20,7 @@ std::string Human::getName(){
 
 Move* Human::makeMove(){
     std::string move;
-    cout << "Enter move:";
-    cin >> move;
+    std::cout << "Enter move:";
+    std::cin >> move;
     return (new Factory())->move_obj(move);
 }
