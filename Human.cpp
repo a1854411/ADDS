@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include <iostream>
 #include "Human.h"
 #include "Move.h"
 #include "Factory.h"
