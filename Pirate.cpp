@@ -1,3 +1,6 @@
+#include <string>
+#include <vector>
+
 #include "Pirate.h"
 #include "Move.h"
 

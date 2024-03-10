@@ -1,3 +1,5 @@
+#include <string>
+#include <vector>
 #include "Paper.h"
 #include "Move.h"
 

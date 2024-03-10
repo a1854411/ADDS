@@ -1,3 +1,6 @@
+#include <string>
+#include <vector>
+
 #include "Ninja.h"
 #include "Move.h"
 

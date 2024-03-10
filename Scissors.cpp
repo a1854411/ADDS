@@ -1,3 +1,5 @@
+#include <string>
+#include <vector>
 #include "Scissors.h"
 #include "Move.h"
 

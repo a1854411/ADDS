@@ -1,3 +1,6 @@
+#include <string>
+#include <vector>
+
 #include "Rock.h"
 #include "Move.h"
 
