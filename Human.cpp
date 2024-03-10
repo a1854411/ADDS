@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include <cstdio>
 
 using namespace std;
 
@@ -21,7 +22,9 @@ std::string Human::getName(){
 
 Move* Human::makeMove(){
     std::string move;
-    std::cout << "Enter move:";
-    std::cin >> move;
+    printf("Enter move:");
+    char buffer[100];
+    scanf("%s", buffer);
+    move = std::string(buffer);
     return (new Factory())->move_obj(move);
 }
