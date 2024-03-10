@@ -1,11 +1,11 @@
 #include <string>
 #include <vector>
-#include <iostream>
+
+using namespace std;
+
 #include "Human.h"
 #include "Move.h"
 #include "Factory.h"
-
-using namespace std;
 
 Human::Human(){
     this->name = "Human";
