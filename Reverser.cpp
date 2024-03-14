@@ -2,13 +2,14 @@
 
 #include "Reverser.h"
 
-int reverseDigit(int digit){
+int Reverser::reverseDigit(int digit){
     
 }
-std::string reverseString(std::string string){
+std::string Reverser::reverseString(std::string string){
     std::string string_reversed;
-    for(int i=0; i<length(string_reversed); i++){
-        string_reversed[i] == string[size(string)-i];
+    if 
+    for(int i=0; i<string_reversed.length(); i++){
+        string_reversed[i] == string[string_reversed.size()-i];
         
     }
     return 
