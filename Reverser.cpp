@@ -1,16 +1,31 @@
+#include <tgmath.h>
 #include <string>
-
 #include "Reverser.h"
 
 int Reverser::reverseDigit(int digit){
-    
+    if(digit < 10 && digit > 0){
+        return digit;
+    }
+    if(digit < 0){
+        return -1;
+    }
+    else{ 
+        int digit_reversed = digit % 10;
+        int digit_divided = digit / 10;
+        int digit_result = (int)log10(digit_divided) + 1;
+        return digit_reversed * pow(10, digit_result) + reverseDigit(digit_divided); 
+    }
 }
+
 std::string Reverser::reverseString(std::string string){
     std::string string_reversed;
-    if 
-    for(int i=0; i<string_reversed.length(); i++){
-        string_reversed[i] == string[string_reversed.size()-i];
-        
+    if(string.size() <= 1 && string.size() > 0){
+        return string;
     }
-    return 
+    if(string.empty()){
+        return "ERROR";
+    }
+    else{
+        return reverseString(string_reversed.substr(1)) + string[0]; 
+    }
 }
