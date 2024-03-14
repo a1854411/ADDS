@@ -19,7 +19,7 @@ int Reverser::reverseDigit(int digit){
 
 std::string Reverser::reverseString(std::string string){
     std::string string_reversed;
-    if(string.size() <= 1 && string.size() > 0){
+    if(string.length() <= 1 && string.length() > 0){
         return string;
     }
     if(string.empty()){
