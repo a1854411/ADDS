@@ -18,7 +18,6 @@ int Reverser::reverseDigit(int digit){
 }
 
 std::string Reverser::reverseString(std::string string){
-    std::string string_reversed;
     if(string.length() <= 1 && string.length() > 0){
         return string;
     }
@@ -26,6 +25,6 @@ std::string Reverser::reverseString(std::string string){
         return "ERROR";
     }
     else{
-        return reverseString(string_reversed.substr(1)) + string[0]; 
+        return reverseString(string.substr(1)) + string[0]; 
     }
 }
