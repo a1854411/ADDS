@@ -9,11 +9,10 @@ void BagOfHolding::addItem(std::string item){
 
 std::string BagOfHolding::removeItem(){
     srand(time(nullptr));
-
     int spot = rand() % bag.size();
     std::string item = bag.at(spot);
     bag.erase(bag.begin() + spot);
-
+    return item;
 }
 
 std::string BagOfHolding::removeItem(std::string itemRemoved){
