@@ -4,14 +4,13 @@
 #ifndef BAGOFHOLDING_H
 #define BAGOFHOLDING_H
 
-template <class B> 
-
 class BagOfHolding {
     private:
-        std::vector<B>; 
+        std::vector<std::string> bag; 
     public:
-        void addItem(B item);
-        void removeItem(B item); 
+        void addItem(std::string item);
+        std::string removeItem(); 
+        std::string removeItem(std::string item); 
 };
 
 #endif
