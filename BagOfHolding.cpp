@@ -8,7 +8,7 @@ void BagOfHolding::addItem(std::string item){
 }
 
 std::string BagOfHolding::removeItem(){
-    srand(time(NULL));
+    srand(time(nullptr));
 
     int spot = rand() % bag.size();
     std::string item = bag.at(spot);
@@ -24,5 +24,5 @@ std::string BagOfHolding::removeItem(std::string itemRemoved){
             return item; 
         }
     }
-    return NULL;
+    return nullptr;
 }
