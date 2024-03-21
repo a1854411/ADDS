@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 #ifndef BAGOFHOLDING_H
 #define BAGOFHOLDING_H
@@ -7,10 +8,10 @@ template <class B>
 
 class BagOfHolding {
     private:
-    B item;
+        std::vector<B>; 
     public:
-        void addItem(&B item);
-        void removeItem(&B item); 
+        void addItem(B item);
+        void removeItem(B item); 
 };
 
 #endif
