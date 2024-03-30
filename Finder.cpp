@@ -7,7 +7,7 @@ std::vector<int> Finder::findSubstrings(std::string s1, std::string s2){
 
         if (found != std::string::npos) { //if position of prefix is not the same as the already found postition 
             result.push_back(found); //add index position to result vector
-            startPos = found;
+            startPos = found + 1;
         } else {
             result.push_back(-1); //add -1 to result vector
         }
