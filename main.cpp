@@ -4,8 +4,8 @@
 using namespace std;
 
 int main() {
-    string s1 = "464554567";
-    string s2 = "45689";
+    string s1 = "734658732465";
+    string s2 = "463";
 
     Finder finder;
     vector<int> indices = finder.findSubstrings(s1, s2);
