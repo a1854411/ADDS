@@ -7,7 +7,7 @@
 class Sort {
     private:
     public:
-        virtual std::vector<int> sort(std::vector<int> list);
+        std::vector<int> sort(std::vector<int> list);
 };
 
 #endif

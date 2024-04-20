@@ -27,7 +27,7 @@ int partition(std::vector<int>& data, int low, int high){
     return i + 1;
 }
 
-std::vector<int> sort(std::vector<int> list, int high, int low){
+std::vector<int> QuickSort::sort(std::vector<int> list, int high, int low){
     if(low < high){
         int pivot_index = partition(list, low, high);
         sort(list, low, pivot_index - 1);

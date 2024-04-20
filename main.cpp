@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 using namespace std;
 #include "BubbleSort.h"
 #include "QuickSort.h"
@@ -16,7 +17,7 @@ int main(){
 
     std::vector<int> unsorted_array = {1,3,5,4,-5,100,7777,2014};
     int low = unsorted_array[0];
-    int high = unsorted_array[unsorted_array.size()];
+    int high = unsorted_array[unsorted_array.size()-1];
     //BubbleSort bubble;
     //std::vector<int> sorted_array = bubble.sort(unsorted_array);
 
