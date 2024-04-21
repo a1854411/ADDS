@@ -60,6 +60,14 @@ int main() {
 
     // Perform binary search for target = 1
     RecursiveBinarySearch binarySearch;
-    //bool result = binarySearch.search(list, 1);
+    bool result = binarySearch.search(list, 1);
 
+    // Output result
+    std::cout << (result ? "true" : "false") << " ";
+    for (int num : list) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
 }
