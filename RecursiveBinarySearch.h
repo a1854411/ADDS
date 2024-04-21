@@ -3,12 +3,12 @@
 
 #include <iostream>
 #include <vector>
-#using namespace std;
+using namespace std;
 
 class RecursiveBinarySearch {
     private:
     public:
-        bool search(std::vector<int>, int);
+        bool search(std::vector<int>& data, int target);
 };
 
 #endif
