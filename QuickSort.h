@@ -5,9 +5,11 @@
 
 class QuickSort : public Sort {
     private:
+        void swap(int& a, int& b);
+        int partition(std::vector<int>& list, int low, int high);
+        void sortHelper(std::vector<int>& list, int low, int high);
     public:
-        std::vector<int> sort(std::vector<int>& list, int high, int low);
-        int partition(std::vector<int>& data, int low, int high);
+        std::vector<int> sort(const std::vector<int>& list) override;
 };
 
 #endif

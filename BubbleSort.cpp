@@ -1,12 +1,20 @@
 #include "BubbleSort.h"
+using namespace std;
 
-std::vector<int> sort(std::vector<int> list){
-    for (int i = list.size()-1; i>1; i--){
-        for (int j=0; j<i; j++){
-            if(list.at(j) > list.at(j+1)){
-                std::swap(list[j], list[j+1]);
+void swap(int& a, int& b){
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+std::vector<int> BubbleSort::sort(const std::vector<int>& list) {
+    std::vector<int> sortedList = list;
+    for (int i = sortedList.size() - 1; i > 1; i--) {
+        for (int j = 0; j < i; j++) {
+            if (sortedList[j] > sortedList[j + 1]) {
+                swap(sortedList[j], sortedList[j + 1]);
             }
         }
     }
-    return list;
+    return sortedList;
 }

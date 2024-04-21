@@ -1,5 +1,4 @@
 #include <iostream>
-#include <iomanip>
 #include <sstream>
 using namespace std;
 #include "BubbleSort.h"
@@ -15,16 +14,22 @@ int main(){
         list.push_back(num);
     }
 
-    std::vector<int> unsorted_array = {1,3,5,4,-5,100,7777,2014};
-    int low = unsorted_array[0];
-    int high = unsorted_array[unsorted_array.size()-1];
-    //BubbleSort bubble;
-    //std::vector<int> sorted_array = bubble.sort(unsorted_array);
+    std::vector<int> bubbleunsorted_array = {1,3,5,4,-5,100,7777,2014};
+    std::vector<int> quickunsorted_array = {1,3,5,4,-5,100,7777,2014};
+    //int low = unsorted_array[0];
+    //int high = unsorted_array[unsorted_array.size()-1];
+    BubbleSort bubble;
+    std::vector<int> bubblesorted_array = bubble.sort(bubbleunsorted_array);
 
     QuickSort quick;
-    std::vector<int> sorted_array = quick.sort(unsorted_array, low, high);
+    std::vector<int> quicksorted_array = quick.sort(quickunsorted_array);
 
-    for (int num : sorted_array){
+    for (int num : bubblesorted_array){
+        std::cout << num;
+    }
+    std::cout << std::endl;
+
+    for (int num : quicksorted_array){
         std::cout << num;
     }
     std::cout << std::endl;

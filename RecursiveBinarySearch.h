@@ -1,14 +1,13 @@
 #ifndef RECURSIVEBINARYSEARCH_H
 #define RECURSIVEBINARYSEARCH_H
 
-#include <iostream>
 #include <vector>
-using namespace std;
 
 class RecursiveBinarySearch {
-    private:
-    public:
-        bool search(std::vector<int>& data, int target);
+public:
+    bool search(const std::vector<int>& list, int target);
+private:
+    bool binarySearch(const std::vector<int>& list, int target, int low, int high);
 };
 
 #endif
