@@ -1,4 +1,5 @@
 #include "LinkedList.h"
+#include <limits>
 
 LinkedList::LinkedList(){
     head = nullptr;
