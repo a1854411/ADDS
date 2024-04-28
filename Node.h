@@ -10,6 +10,7 @@ class Node {
         Node* link;
     public:
         Node(int data, Node*);
+        int get_data();
 };
 
 #endif
