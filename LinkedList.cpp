@@ -37,21 +37,19 @@ void LinkedList::printList() {
 bool LinkedList::swap(int pos1, int pos2) { 
 // swaps the data at positions pos1 and pos2 then returns true.
 // If a or b are out-of-bounds, return false without swapping any elements.
-    int aNum, bNum;
-    Node* a = new Node(aNum, nullptr);
-    Node* b = new Node(bNum, nullptr);
+    // int aNum, bNum;
+    // Node* a = new Node(aNum, nullptr);
+    // Node* b = new Node(bNum, nullptr);
 
     // swap(a,b);
 
-    if (pos1<1 || pos2<1 || head == nullptr){
-        return false;
-    }
-
-    // if (currNode == nullptr){
+    // if (pos1<1 || pos2<1 || head == nullptr){
     //     return false;
     // }
 
-
+    // if (currNode == nullptr){
+        return false;
+    // }
 
 }
 
@@ -60,7 +58,6 @@ bool LinkedList::find_and_delete(int target){
 // If target appears multiple times in the list, delete the first occurrence.
 // If target does not exist in the list return false.
 
-    int index = 1;
     for (Node* currNode = head; currNode != nullptr; currNode = currNode->link){
         if(currNode->data == target){
             
