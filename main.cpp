@@ -44,7 +44,7 @@
 #include "RecursiveBinarySearch.h"
 
 int main() {
-    // Read input
+    // Read input and convert sting to int vector
     std::string input;
     std::getline(std::cin, input);
     std::istringstream iss(input);
