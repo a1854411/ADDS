@@ -1,5 +1,4 @@
-#include "node.h"
-
+#include "Node.h"
 
 Node::Node(){
     this->word_check = false;
