@@ -1,10 +1,14 @@
 #include "Autocomplete.h"
+#include "Node.h"
 
-std::vector<std::string> Autocomplete::getSuggestions(std::string partialWord){
-    result = [];
-    Node *current = root;
+Autocomplete::Autocomplete(){
+    root = new Node();
 }
 
-void Autocomplete::insert(std::string word){
-    Node *current = root;
+vector<string> Autocomplete::getSuggestions(string partialWord){
+    return root->getSuggestions(partialWord);
+}
+
+void Autocomplete::insert(string word){
+    root->insert(word);
 }
