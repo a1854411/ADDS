@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <cmath>  // for floor
+#include <iostream>
+using namespace std;
 
 template <typename T>
 
@@ -47,35 +49,62 @@ Heap<T>::Heap(std::vector<T> start_values) {
   }
 }
 
-
+// insert value to the heap
 template <typename T>
 void Heap<T>::insert(T value) {
     values.push_back(value);
-    parent_index = floor((&value.size())-1/2);
+    int child_index = values.size() - 1;
+    int parent_index = (child_index - 1) / 2;
 
-    while(value < values.at(parent_index)){
-        std::swap(value, values.at(parent_index));
-        &value = parent_index; // set value index to be parent_index
-        parent_index = floor((&value.size())-1/2); //set parent index to be grandparent_index
+    while (child_index > 0 && values[child_index] < values[parent_index]) {
+        std::swap(values[child_index], values[parent_index]);
+        child_index = parent_index;
+        parent_index = (child_index - 1) / 2;
     }
 }
 
-/*******************************/
 /* delete values from the heap */
-/*******************************/
-
 template <typename T>
 void Heap<T>::remove(T value) {
-  // TODO: TO BE IMPLEMENTED
+    auto it = std::find(values.begin(), values.end(), value);
+    if (it != values.end()) {
+        size_t index = std::distance(values.begin(), it);
+        std::swap(values[index], values.back());
+        values.pop_back();
+        if (index < values.size()) {
+            if (index > 0 && values[index] < values[(index - 1) / 2]) {
+                // If the swapped value is less than its parent, bubble up
+                while (index > 0 && values[index] < values[(index - 1) / 2]) {
+                    std::swap(values[index], values[(index - 1) / 2]);
+                    index = (index - 1) / 2;
+                }
+            } else {
+                // If the swapped value is greater than or equal to its parent, sink down
+                while (2 * index + 1 < values.size()) {
+                    size_t min_child = 2 * index + 1;
+                    if (2 * index + 2 < values.size() && values[2 * index + 2] < values[min_child]) {
+                        min_child = 2 * index + 2;
+                    }
+                    if (values[index] <= values[min_child]) break;
+                    std::swap(values[index], values[min_child]);
+                    index = min_child;
+                }
+            }
+        }
+    }
 }
 
-/*******************************/
-// find the smallest value in the heap
-/*******************************/
 
+
+// find the smallest value in the heap
 template <typename T>
 T Heap<T>::getMin() {
-  // TODO: TO BE IMPLEMENTED
+    if (values.empty()) {
+        // If the heap is empty, return a default-initialized value of type T
+        return T();
+    }
+    // The smallest value is always at the root (index 0) in a min-heap
+    return values[0];
 }
 
 // private function to heapify a given 'node'
@@ -118,11 +147,23 @@ void Heap<T>::heapify(int parent_index) {
 
 #endif
 
+template <typename T>
+int main() {
+    std::vector<T> values = {4, 5, 3, 6, 1, 2};
 
-int main(){
-    std::vector<T> values = {4,5,3,6,1,2};
-    Heap::Heap(std::vector<T>);
-    parent_index = 0;
-    Heap::Heapify(parent_index);
-    void Heap<T>::insert(T 7);
+    // Create a heap and heapify it
+    Heap<T> myHeap(values);
+    myHeap.heapify();
+
+    // Insert a new value into the heap
+    myHeap.insert(7);
+
+    // Print out the heap
+    std::cout << "Heap elements: ";
+    for (const auto& element : heap.getValues()) {
+        std::cout << element << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
 }
