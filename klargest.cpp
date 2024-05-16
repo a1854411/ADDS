@@ -3,7 +3,7 @@
 using namespace std;
 
 int kth_largest(vector<int> values, int k){
- std::priority_queue<int,    std::vector<int>, std::greater<int>> min_heap; // Define a min heap using priority_queue with greater comparator
+ std::priority_queue<int, std::vector<int>, std::greater<int>> min_heap; // Define a min heap using priority_queue with greater comparator
      // Insert all elements of values into the min heap
     for (int val : values) {
         min_heap.push(val);

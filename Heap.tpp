@@ -146,24 +146,3 @@ void Heap<T>::heapify(int parent_index) {
 }
 
 #endif
-
-template <typename T>
-int main() {
-    std::vector<T> values = {4, 5, 3, 6, 1, 2};
-
-    // Create a heap and heapify it
-    Heap<T> myHeap(values);
-    myHeap.heapify();
-
-    // Insert a new value into the heap
-    myHeap.insert(7);
-
-    // Print out the heap
-    std::cout << "Heap elements: ";
-    for (const auto& element : heap.getValues()) {
-        std::cout << element << " ";
-    }
-    std::cout << std::endl;
-
-    return 0;
-}
