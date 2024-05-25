@@ -33,15 +33,13 @@ void Document::set_number_borrowed(int numberBorrowed){
 }
 
 void Document::increment_number_borrowed(){
-    number_borrowed = get_number_borrowed();
     number_borrowed++;
-    set_number_borrowed(number_borrowed);
 }
 
 void Document::decrement_number_borrowed(){
-    number_borrowed = get_number_borrowed();
-    number_borrowed--;
-    set_number_borrowed(number_borrowed);
+    if (number_borrowed > 0) {
+        number_borrowed--;
+    }
 }
 
 Document::Document(){
