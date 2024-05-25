@@ -2,7 +2,7 @@
 #define DOCUMENTMANAGER_H
 
 #include "Document.h"
-#include "patron.h"
+#include "Patron.h"
 #include <iostream>
 #include <string>
 #include <unordered_map>
@@ -37,14 +37,14 @@ class DocumentManager {
             // Check if the document exists
             auto docIt = Documents.find(docid);
             if (docIt == Documents.end()) {
-                cout << "Document ID " << docid << " not found." << endl;
+                // cout << "Document ID " << docid << " not found." << endl;
                 return false;
             }
 
             // Check if the patron exists
             auto patronIt = borrowedDocuments.find(patronID);
             if (patronIt == borrowedDocuments.end()) {
-                cout << "Patron ID " << patronID << " not found." << endl;
+                // cout << "Patron ID " << patronID << " not found." << endl;
                 return false;
             }
 
@@ -52,7 +52,7 @@ class DocumentManager {
 
             // Check if the document can be borrowed
             if (doc->get_number_borrowed() >= doc->get_license_limit()) {
-                cout << "Document ID " << docid << " has reached its license limit." << endl;
+                // cout << "Document ID " << docid << " has reached its license limit." << endl;
                 return false;
             }
 
@@ -60,31 +60,31 @@ class DocumentManager {
             patronIt->second.push_back(docid);
             doc->increment_number_borrowed();
 
-            cout << "Document ID " << docid << " successfully borrowed by patron ID " << patronID << "." << endl;
+            // cout << "Document ID " << docid << " successfully borrowed by patron ID " << patronID << "." << endl;
             return true;
         }
 
-        void returnDocument(int docid, int patronID) {
+        bool returnDocument(int docid, int patronID) {
             // Check if the document exists
             auto docIt = Documents.find(docid);
             if (docIt == Documents.end()) {
-                cout << "Document ID " << docid << " not found." << endl;
-                return;
+                // cout << "Document ID " << docid << " not found." << endl;
+                return false;
             }
 
             // Check if the patron exists
             auto patronIt = borrowedDocuments.find(patronID);
             if (patronIt == borrowedDocuments.end()) {
-                cout << "Patron ID " << patronID << " not found." << endl;
-                return;
+                // cout << "Patron ID " << patronID << " not found." << endl;
+                return false;
             }
 
             // Check if the patron has borrowed the document
             auto& borrowedDocs = patronIt->second;
             auto borrowedDocIt = find(borrowedDocs.begin(), borrowedDocs.end(), docid);
             if (borrowedDocIt == borrowedDocs.end()) {
-                cout << "Patron ID " << patronID << " has not borrowed Document ID " << docid << "." << endl;
-                return;
+                // cout << "Patron ID " << patronID << " has not borrowed Document ID " << docid << "." << endl;
+                return false;
             }
 
             // Remove the document ID from the patron's borrowed list
@@ -94,8 +94,9 @@ class DocumentManager {
             Document* doc = docIt->second;
             doc->decrement_number_borrowed();
 
-            cout << "Document ID " << docid << " successfully returned by Patron ID " << patronID << "." << endl;
+            // cout << "Document ID " << docid << " successfully returned by Patron ID " << patronID << "." << endl;
+            return true;
         }
 };
 
-#endif // DOCUMENTMANAGER_H
+#endif
