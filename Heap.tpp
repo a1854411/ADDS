@@ -43,8 +43,7 @@ Heap<T>::Heap(std::vector<T> start_values) {
   // starting from last non-leaf node (last parent), heapify each
   // of the parents
   int initial_parent_index = floor(values.size() / 2) - 1;
-  for (int parent_index = initial_parent_index; parent_index >= 0;
-       parent_index--) {
+  for (int parent_index = initial_parent_index; parent_index >= 0; parent_index--) {
     heapify(parent_index);
   }
 }
@@ -107,6 +106,7 @@ T Heap<T>::getMin() {
     return values[0];
 }
 
+
 // private function to heapify a given 'node'
 template <typename T>
 void Heap<T>::heapify(int parent_index) {
@@ -121,8 +121,7 @@ void Heap<T>::heapify(int parent_index) {
   int index_of_smallest = parent_index;
 
   // check if left child exists and if exists, is smallest value there
-  if (left_child_index < values.size() &&
-      values.at(left_child_index) < values.at(index_of_smallest)) {
+  if (left_child_index < values.size() && values.at(left_child_index) < values.at(index_of_smallest)) {
     // make this index the current smallest
     index_of_smallest = left_child_index;
   }
