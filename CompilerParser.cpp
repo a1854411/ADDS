@@ -20,7 +20,7 @@ ParseTree* CompilerParser::compileProgram() {
     }
 
     //get identifier
-    if (have("identifier", "MyClass")) {
+    if (have("identifier", "")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
     } else {
