@@ -5,10 +5,11 @@ CompilerParser::CompilerParser(std::list<Token*> tokens) : tokens(tokens) {
 }
 
 ParseTree* CompilerParser::compileProgram() {
+    //check if program doesn't begin with class
     if(current()->getValue() != "class"){
         throw ParseException();
     }
-    
+    else{
     //get class
     ParseTree* newTree = new ParseTree("class", "");
     if (mustBe("keyword", "class")) {
@@ -42,6 +43,7 @@ ParseTree* CompilerParser::compileProgram() {
     }
 
     return newTree;
+    }
 }
 
 /**
