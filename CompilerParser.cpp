@@ -122,7 +122,7 @@ ParseTree* CompilerParser::compileClassVarDec() {
     }
 
     //get identifier
-    if (have("identifier", "a")) {
+    if (have("identifier", "")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
     } else {
@@ -153,7 +153,49 @@ ParseTree* CompilerParser::compileSubroutine() {
  * @return a ParseTree
  */
 ParseTree* CompilerParser::compileParameterList() {
-    return NULL;
+    ParseTree* newTree = new ParseTree("parameterList", "");
+
+    // get var type
+    if (have("keyword", "int") || mustBe("keyword", "char") || mustBe("keyword", "boolean")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
+
+    //get identifier
+    if (have("identifier", "")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
+
+    //get symbol ,
+    if (have("symbol", ",")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
+
+    // get var type
+    if (have("keyword", "int") || mustBe("keyword", "char") || mustBe("keyword", "boolean")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
+
+    //get identifier
+    if (have("identifier", "")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
+
+    return newTree;
 }
 
 /**
