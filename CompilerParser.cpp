@@ -77,7 +77,7 @@ ParseTree* CompilerParser::compileClass() {
     }
 
     //get static
-    if (mustBe("keyword", "static")) {
+    if (mustBe("keyword", "static") || mustBe("keyword", "field")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
     } else {
@@ -125,7 +125,41 @@ ParseTree* CompilerParser::compileClass() {
  * @return a ParseTree
  */
 ParseTree* CompilerParser::compileClassVarDec() {
-    return nullptr;
+    ParseTree* newTree = new ParseTree("classVarDec", "");
+
+    //get static or field
+    if (mustBe("keyword", "static") || mustBe("keyword", "field")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
+
+    // get var type
+    if (mustBe("keyword", "int") || mustBe("keyword", "char") || mustBe("keyword", "boolean")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
+
+    //get identifier
+    if (mustBe("identifier", "a")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
+
+    //get symbol ;
+    if (mustBe("symbol", ";")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
+
+    return newTree;
 }
 
 /**
