@@ -50,6 +50,8 @@ ParseTree* CompilerParser::compileProgram() {
     else{
         throw ParseException();
     }
+
+    return newTree;
 }
 
 
