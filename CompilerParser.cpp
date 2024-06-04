@@ -5,6 +5,7 @@ CompilerParser::CompilerParser(std::list<Token*> tokens) : tokens(tokens) {
 }
 
 ParseTree* CompilerParser::compileProgram() {
+    //get class
     ParseTree* newTree = new ParseTree("class", "");
     if (mustBe("keyword", "class")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
@@ -13,6 +14,7 @@ ParseTree* CompilerParser::compileProgram() {
         throw ParseException();
     }
 
+    //get identifier
     if (mustBe("identifier", "MyClass")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
@@ -20,6 +22,7 @@ ParseTree* CompilerParser::compileProgram() {
         throw ParseException();
     }
 
+    //get symbols
     if (mustBe("symbol", "{")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
@@ -42,7 +45,72 @@ ParseTree* CompilerParser::compileProgram() {
  * @return a ParseTree
  */
 ParseTree* CompilerParser::compileClass() {
-    return NULL;
+    //get class
+    ParseTree* newTree = new ParseTree("class", "");
+    if (mustBe("keyword", "class")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
+
+    //get identifier
+    if (mustBe("identifier", "MyClass")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
+
+    //get symbol {
+    if (mustBe("symbol", "{")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
+
+    //get static
+    if (mustBe("keyword", "static")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
+
+    //get int
+    if (mustBe("keyword", "int")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
+
+    //get a
+    if (mustBe("identifier", "a")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
+
+    //get symbol ;
+    if (mustBe("symbol", ";")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
+
+    //get symbol }
+    if (mustBe("symbol", "}")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
+
+    return newTree;
 }
 
 /**
