@@ -8,9 +8,12 @@
 #include "Token.h"
 
 class CompilerParser {
+    private:
+        std::list<Token*> tokens;
+        std::list<Token*>::iterator it;
     public:
         CompilerParser(std::list<Token*> tokens);
-
+        
         ParseTree* compileProgram();
         ParseTree* compileClass();
         ParseTree* compileClassVarDec();
@@ -42,3 +45,4 @@ class ParseException : public std::exception {
 };
 
 #endif /*COMPILERPARSER_H*/
+

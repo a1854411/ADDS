@@ -11,3 +11,4 @@ class Token : public ParseTree {
 };
 
 #endif /*TOKEN_H*/
+

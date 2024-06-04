@@ -8,3 +8,4 @@ using namespace std;
  */
 Token::Token(string type, string value) : ParseTree(type, value) {
 }
+

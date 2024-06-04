@@ -78,3 +78,4 @@ string ParseTree::tostring(int depth) {
     }
     return output;
 }
+
