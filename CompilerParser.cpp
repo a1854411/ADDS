@@ -5,6 +5,10 @@ CompilerParser::CompilerParser(std::list<Token*> tokens) : tokens(tokens) {
 }
 
 ParseTree* CompilerParser::compileProgram() {
+    if(current()->getValue() != "class"){
+        throw ParseException();
+    }
+    
     //get class
     ParseTree* newTree = new ParseTree("class", "");
     if (mustBe("keyword", "class")) {
@@ -113,12 +117,13 @@ ParseTree* CompilerParser::compileClass() {
     return newTree;
 }
 
+
 /**
  * Generates a parse tree for a static variable declaration or field declaration
  * @return a ParseTree
  */
 ParseTree* CompilerParser::compileClassVarDec() {
-    return NULL;
+
 }
 
 /**
