@@ -84,29 +84,7 @@ ParseTree* CompilerParser::compileClass() {
         throw ParseException();
     }
 
-    //get int
-    if (have("keyword", "int")) {
-        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
-        next();
-    } else {
-        throw ParseException();
-    }
-
-    //get a
-    if (have("identifier", "a")) {
-        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
-        next();
-    } else {
-        throw ParseException();
-    }
-
-    //get symbol ;
-    if (have("symbol", ";")) {
-        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
-        next();
-    } else {
-        throw ParseException();
-    }
+    compileClassVarDec();
 
     //get symbol }
     if (have("symbol", "}")) {
