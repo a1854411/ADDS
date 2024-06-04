@@ -6,13 +6,13 @@ CompilerParser::CompilerParser(std::list<Token*> tokens) : tokens(tokens) {
 
 ParseTree* CompilerParser::compileProgram() {
     //check if program doesn't begin with class
-    if(current()->getValue() != "class"){
-        throw ParseException();
-    }
-    else{
+    // if(current()->getValue() != "class"){
+    //     throw ParseException();
+    // }
+    // else{
     //get class
     ParseTree* newTree = new ParseTree("class", "");
-    if (mustBe("keyword", "class")) {
+    if (have("keyword", "class")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
     } else {
@@ -20,7 +20,7 @@ ParseTree* CompilerParser::compileProgram() {
     }
 
     //get identifier
-    if (mustBe("identifier", "MyClass")) {
+    if (have("identifier", "MyClass")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
     } else {
@@ -28,14 +28,14 @@ ParseTree* CompilerParser::compileProgram() {
     }
 
     //get symbols
-    if (mustBe("symbol", "{")) {
+    if (have("symbol", "{")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
     } else {
         throw ParseException();
     }
 
-    if (mustBe("symbol", "}")) {
+    if (have("symbol", "}")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
     } else {
@@ -44,7 +44,7 @@ ParseTree* CompilerParser::compileProgram() {
 
     return newTree;
     }
-}
+// }
 
 /**
  * Generates a parse tree for a single class
@@ -125,7 +125,7 @@ ParseTree* CompilerParser::compileClass() {
  * @return a ParseTree
  */
 ParseTree* CompilerParser::compileClassVarDec() {
-
+    return nullptr;
 }
 
 /**
