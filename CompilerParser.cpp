@@ -203,16 +203,58 @@ ParseTree* CompilerParser::compileParameterList() {
  * @return a ParseTree
  */
 ParseTree* CompilerParser::compileSubroutineBody() {
-    return NULL;
+    ParseTree* newTree = new ParseTree("subroutineBody", "");
+
+    //get symbol {
+    if (have("symbol", "{")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
 }
+
 
 /**
  * Generates a parse tree for a subroutine variable declaration
  * @return a ParseTree
  */
 ParseTree* CompilerParser::compileVarDec() {
-    return NULL;
+    ParseTree* newTree = new ParseTree("varDec", "");
+
+    //get keyword var
+    if (have("keyword", "var")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
+
+    // get var type
+    if (have("keyword", "int") || mustBe("keyword", "char") || mustBe("keyword", "boolean")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
+
+    //get identifier
+    if (have("identifier", "")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
+
+    //get symbol ;
+    if (have("symbol", ";")) {
+        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+        next();
+    } else {
+        throw ParseException();
+    }
 }
+
 
 /**
  * Generates a parse tree for a series of statements
