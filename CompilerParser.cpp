@@ -53,7 +53,7 @@ ParseTree* CompilerParser::compileProgram() {
 ParseTree* CompilerParser::compileClass() {
     //get class
     ParseTree* newTree = new ParseTree("class", "");
-    if (mustBe("keyword", "class")) {
+    if (have("keyword", "class")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
     } else {
@@ -61,7 +61,7 @@ ParseTree* CompilerParser::compileClass() {
     }
 
     //get identifier
-    if (mustBe("identifier", "MyClass")) {
+    if (have("identifier", "MyClass")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
     } else {
@@ -69,7 +69,7 @@ ParseTree* CompilerParser::compileClass() {
     }
 
     //get symbol {
-    if (mustBe("symbol", "{")) {
+    if (have("symbol", "{")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
     } else {
@@ -77,7 +77,7 @@ ParseTree* CompilerParser::compileClass() {
     }
 
     //get static
-    if (mustBe("keyword", "static") || mustBe("keyword", "field")) {
+    if (have("keyword", "static") || have("keyword", "field")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
     } else {
@@ -85,7 +85,7 @@ ParseTree* CompilerParser::compileClass() {
     }
 
     //get int
-    if (mustBe("keyword", "int")) {
+    if (have("keyword", "int")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
     } else {
@@ -93,7 +93,7 @@ ParseTree* CompilerParser::compileClass() {
     }
 
     //get a
-    if (mustBe("identifier", "a")) {
+    if (have("identifier", "a")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
     } else {
@@ -101,7 +101,7 @@ ParseTree* CompilerParser::compileClass() {
     }
 
     //get symbol ;
-    if (mustBe("symbol", ";")) {
+    if (have("symbol", ";")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
     } else {
@@ -109,7 +109,7 @@ ParseTree* CompilerParser::compileClass() {
     }
 
     //get symbol }
-    if (mustBe("symbol", "}")) {
+    if (have("symbol", "}")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
     } else {
@@ -128,7 +128,7 @@ ParseTree* CompilerParser::compileClassVarDec() {
     ParseTree* newTree = new ParseTree("classVarDec", "");
 
     //get static or field
-    if (mustBe("keyword", "static") || mustBe("keyword", "field")) {
+    if (have("keyword", "static") || mustBe("keyword", "field")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
     } else {
@@ -136,7 +136,7 @@ ParseTree* CompilerParser::compileClassVarDec() {
     }
 
     // get var type
-    if (mustBe("keyword", "int") || mustBe("keyword", "char") || mustBe("keyword", "boolean")) {
+    if (have("keyword", "int") || mustBe("keyword", "char") || mustBe("keyword", "boolean")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
     } else {
@@ -144,7 +144,7 @@ ParseTree* CompilerParser::compileClassVarDec() {
     }
 
     //get identifier
-    if (mustBe("identifier", "a")) {
+    if (have("identifier", "a")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
     } else {
@@ -152,7 +152,7 @@ ParseTree* CompilerParser::compileClassVarDec() {
     }
 
     //get symbol ;
-    if (mustBe("symbol", ";")) {
+    if (have("symbol", ";")) {
         newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
         next();
     } else {
