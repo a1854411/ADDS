@@ -119,39 +119,46 @@ ParseTree* CompilerParser::compileClass() {
 ParseTree* CompilerParser::compileClassVarDec() {
     ParseTree* newTree = new ParseTree("classVarDec", "");
 
-    //get static or field
-    if (have("keyword", "static") || mustBe("keyword", "field")) {
-        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
-        next();
-    } else {
-        throw ParseException();
-    }
-
-    // get var type
-    if (have("keyword", "int") || mustBe("keyword", "char") || mustBe("keyword", "boolean")) {
-        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
-        next();
-    } else {
-        throw ParseException();
-    }
-
-    //get identifier
-    if (have("identifier", "")) {
-        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
-        next();
-    } else {
-        throw ParseException();
-    }
-
-    //get symbol ;
-    if (have("symbol", ";")) {
-        newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
-        next();
-    } else {
-        throw ParseException();
-    }
-
+    newTree->addChild(new ParseTree("keyword", mustBe("keyword", "var")->getValue()));
+    newTree->addChild(new ParseTree("keyword", mustBe("keyword", "")->getValue()));
+    newTree->addChild(new ParseTree("identifier", mustBe("identifier", "")->getValue()));
+    newTree->addChild(new ParseTree("symbol", mustBe("symbol", ";")->getValue()));
+        
     return newTree;
+
+    // //get static or field
+    // if (have("keyword", "static") || mustBe("keyword", "field")) {
+    //     newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+    //     next();
+    // } else {
+    //     throw ParseException();
+    // }
+
+    // // get var type
+    // if (have("keyword", "int") || mustBe("keyword", "char") || mustBe("keyword", "boolean")) {
+    //     newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+    //     next();
+    // } else {
+    //     throw ParseException();
+    // }
+
+    // //get identifier
+    // if (have("identifier", "")) {
+    //     newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+    //     next();
+    // } else {
+    //     throw ParseException();
+    // }
+
+    // //get symbol ;
+    // if (have("symbol", ";")) {
+    //     newTree->addChild(new ParseTree(current()->getType(), current()->getValue()));
+    //     next();
+    // } else {
+    //     throw ParseException();
+    // }
+
+    // return newTree;
 }
 
 
