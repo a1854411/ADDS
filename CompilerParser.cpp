@@ -45,6 +45,8 @@ ParseTree* CompilerParser::compileProgram() {
 
 //     return newTree;
 //     }
+
+    return compileClass();
 }
 
 
@@ -112,6 +114,7 @@ ParseTree* CompilerParser::compileClass() {
 
         return newTree;
 }
+
 
 ParseTree* CompilerParser::compileClassVarDec() {
     ParseTree* newTree = new ParseTree("classVarDec", "");
