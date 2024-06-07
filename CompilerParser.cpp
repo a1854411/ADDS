@@ -31,6 +31,12 @@ ParseTree* CompilerParser::compileClassVarDec() {
     newTree->addChild(new ParseTree("keyword", mustBe("keyword", "")->getValue()));
     newTree->addChild(new ParseTree("keyword", mustBe("keyword", "")->getValue()));
     newTree->addChild(new ParseTree("identifier", mustBe("identifier", "")->getValue()));
+    
+    while (have("symbol", ",")) {
+        newTree->addChild(new ParseTree("symbol", mustBe("symbol", ",")->getValue()));
+        newTree->addChild(new ParseTree("identifier", mustBe("identifier", "")->getValue()));
+    }
+
     newTree->addChild(new ParseTree("symbol", mustBe("symbol", ";")->getValue()));
     return newTree;
 }
@@ -87,6 +93,12 @@ ParseTree* CompilerParser::compileVarDec() {
     newTree->addChild(new ParseTree("keyword", mustBe("keyword", "var")->getValue()));
     newTree->addChild(new ParseTree("keyword", mustBe("keyword", "")->getValue()));
     newTree->addChild(new ParseTree("identifier", mustBe("identifier", "")->getValue()));
+    
+    while (have("symbol", ",")) {
+        newTree->addChild(new ParseTree("symbol", mustBe("symbol", ",")->getValue()));
+        newTree->addChild(new ParseTree("identifier", mustBe("identifier", "")->getValue()));
+    }
+
     newTree->addChild(new ParseTree("symbol", mustBe("symbol", ";")->getValue()));
     return newTree;
 }
@@ -115,6 +127,13 @@ ParseTree* CompilerParser::compileLet() {
     ParseTree* newTree = new ParseTree("letStatement", "");
     newTree->addChild(new ParseTree("keyword", mustBe("keyword", "let")->getValue()));
     newTree->addChild(new ParseTree("identifier", mustBe("identifier", "")->getValue()));
+
+    if (have("symbol", "[")) {
+        newTree->addChild(new ParseTree("symbol", mustBe("symbol", "[")->getValue()));
+        newTree->addChild(compileExpression());
+        newTree->addChild(new ParseTree("symbol", mustBe("symbol", "]")->getValue()));
+    }
+
     newTree->addChild(new ParseTree("symbol", mustBe("symbol", "=")->getValue()));
     newTree->addChild(compileExpression());
     newTree->addChild(new ParseTree("symbol", mustBe("symbol", ";")->getValue()));
@@ -269,6 +288,7 @@ Token* CompilerParser::mustBe(std::string expectedType, std::string expectedValu
 const char* ParseException::what() const noexcept {
     return "An exception occurred while parsing!";
 }
+
 
 // bool CompilerParser::have(std::string expectedType, std::string expectedValue) {
 //     Token* token = current();
