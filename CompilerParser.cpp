@@ -60,20 +60,24 @@ ParseTree* CompilerParser::compileSubroutine() {
     return newTree;
 }
 
+
 ParseTree* CompilerParser::compileParameterList() {
     ParseTree* newTree = new ParseTree("parameterList", "");
 
-    while (!have("symbol", ")")) {
+    if (!have("symbol", ")")) {
         newTree->addChild(new ParseTree("keyword", mustBe("keyword", "")->getValue()));
         newTree->addChild(new ParseTree("identifier", mustBe("identifier", "")->getValue()));
 
-        if (have("symbol", ",")) {
+        while (have("symbol", ",")) {
             newTree->addChild(new ParseTree("symbol", mustBe("symbol", ",")->getValue()));
+            newTree->addChild(new ParseTree("keyword", mustBe("keyword", "")->getValue()));
+            newTree->addChild(new ParseTree("identifier", mustBe("identifier", "")->getValue()));
         }
     }
 
     return newTree;
 }
+
 
 ParseTree* CompilerParser::compileSubroutineBody() {
     ParseTree* newTree = new ParseTree("subroutineBody", "");
