@@ -92,6 +92,7 @@ ParseTree* CompilerParser::compileSubroutineBody() {
     return newTree;
 }
 
+
 ParseTree* CompilerParser::compileVarDec() {
     ParseTree* newTree = new ParseTree("varDec", "");
     newTree->addChild(new ParseTree("keyword", mustBe("keyword", "var")->getValue()));
@@ -127,6 +128,7 @@ ParseTree* CompilerParser::compileStatements() {
     return newTree;
 }
 
+
 ParseTree* CompilerParser::compileLet() {
     ParseTree* newTree = new ParseTree("letStatement", "");
     newTree->addChild(new ParseTree("keyword", mustBe("keyword", "let")->getValue()));
@@ -143,6 +145,7 @@ ParseTree* CompilerParser::compileLet() {
     newTree->addChild(new ParseTree("symbol", mustBe("symbol", ";")->getValue()));
     return newTree;
 }
+
 
 ParseTree* CompilerParser::compileIf() {
     ParseTree* newTree = new ParseTree("ifStatement", "");
