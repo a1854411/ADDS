@@ -43,7 +43,17 @@ ParseTree* CompilerParser::compileClassVarDec() {
 
 ParseTree* CompilerParser::compileSubroutine() {
     ParseTree* newTree = new ParseTree("subroutine", "");
-    newTree->addChild(new ParseTree("keyword", mustBe("keyword", "")->getValue()));
+
+    //add keyword
+    if(have("keyword", "constructor")){
+    newTree->addChild(new ParseTree("keyword", mustBe("keyword", "constructor")->getValue()));
+    }
+    else if(have("keyword", "method")){
+    newTree->addChild(new ParseTree("keyword", mustBe("keyword", "method")->getValue()));
+    }
+    else if(have("keyword", "function")){
+    newTree->addChild(new ParseTree("keyword", mustBe("keyword", "function")->getValue()));
+    }
 
     if (have("keyword", "void")) {
         newTree->addChild(new ParseTree("keyword", mustBe("keyword", "void")->getValue()));
