@@ -265,17 +265,16 @@ ParseTree* CompilerParser::compileReturn() {
 
 ParseTree* CompilerParser::compileExpression() {
     ParseTree* newTree = new ParseTree("expression", "");
-
     if (mustHave("keyword", "skip")) {
         newTree->addChild(mustBe("keyword", "skip"));
     } 
     else if (mustHave("symbol", ";")) {
         return newTree;
     } 
-    else if (mustHave("integerConstant", "") || mustHave("stringConstant", "") ||
+    else if (have("integerConstant", "") || have("stringConstant", "") ||
              mustHave("keyword", "true") || mustHave("keyword", "false") ||
              mustHave("keyword", "null") || mustHave("keyword", "this") ||
-             mustHave("identifier", "") || !mustHave("symbol", ")")) {
+             have("identifier", "") || !mustHave("symbol", ")")) {
         newTree->addChild(compileTerm());
 
         while (mustHave("symbol", "+") || mustHave("symbol", "-") ||
@@ -283,61 +282,67 @@ ParseTree* CompilerParser::compileExpression() {
                 mustHave("symbol", "&") || mustHave("symbol", "|") ||
                 mustHave("symbol", "<") || mustHave("symbol", ">") ||
                 mustHave("symbol", "=")) {
-                    newTree->addChild(mustBe("symbol", ""));
-                    newTree->addChild(compileTerm());
-            }
+            newTree->addChild(mustBe("symbol", ""));
+            newTree->addChild(compileTerm());
+        }
     }
-
-  return newTree;
+    return newTree;
 }
 
 
 ParseTree* CompilerParser::compileTerm() {
-    ParseTree* newTree = new ParseTree("term", "");
-    if (mustHave("integerConstant", "")) {
+    ParseTree* newTree= new ParseTree("term", "");
+
+    if (have("integerConstant", "")) {
         newTree->addChild(mustBe("integerConstant", ""));
     }
-    else if (mustHave("stringConstant", "")) {
+    else if (have("stringConstant", "")) {
         newTree->addChild(mustBe("stringConstant", ""));
     }
-    else if (mustHave("identifier", "")) {
+    else if (have("identifier", "")) {
         newTree->addChild(mustBe("identifier", ""));
-    if (mustHave("symbol", ".")) {
-        newTree->addChild(mustBe("symbol", "."));
-        newTree->addChild(mustBe("identifier", ""));
-        newTree->addChild(mustBe("symbol", "("));
-        newTree->addChild(compileExpressionList());
-        newTree->addChild(mustBe("symbol", ")"));
-    }
 
-    } else if (mustHave("symbol", "(")) {
+        if (mustHave("symbol", ".")) {
+            newTree->addChild(mustBe("symbol", "."));
+            newTree->addChild(mustBe("identifier", ""));
+            newTree->addChild(mustBe("symbol", "("));
+            newTree->addChild(compileExpressionList());
+            newTree->addChild(mustBe("symbol", ")"));
+        }
+    } 
+    else if (mustHave("symbol", "(")) {
         newTree->addChild(mustBe("symbol", "("));
         newTree->addChild(compileExpression());
         newTree->addChild(mustBe("symbol", ")"));
-    } else if (mustHave("keyword", "true")) {
+    }
+    else if (mustHave("keyword", "true")) {
         newTree->addChild(mustBe("keyword", "true"));
-    } else if (mustHave("keyword", "false")) {
+    }
+    else if (mustHave("keyword", "false")) {
         newTree->addChild(mustBe("keyword", "false"));
-    } else if (mustHave("keyword", "null")) {
+    }
+    else if (mustHave("keyword", "null")) {
         newTree->addChild(mustBe("keyword", "null"));
-    } else if (mustHave("keyword", "this")) {
+    }
+    else if (mustHave("keyword", "this")) {
         newTree->addChild(mustBe("keyword", "this"));
-    } else {
+    }
+    else {
         throw ParseException();
     }
-  return newTree;
+    return newTree;
 }
 
 
 ParseTree* CompilerParser::compileExpressionList() {
     ParseTree* newTree = new ParseTree("expressionList", "");
-    newTree->addChild(compileExpression());
 
+    newTree->addChild(compileExpression());
     while (mustHave("symbol", ",")) {
         newTree->addChild(mustBe("symbol", ","));
         newTree->addChild(compileExpression());
     }
-  return newTree;
+    return newTree;
 }
 
 void CompilerParser::next() {
