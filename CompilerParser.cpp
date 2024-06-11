@@ -122,7 +122,9 @@ ParseTree* CompilerParser::compileSubroutineBody() {
         newTree->addChild(compileVarDec());
     }
 
-    if (mustHave("keyword", "let") || mustHave("keyword", "do") || mustHave("keyword", "return") || mustHave("keyword", "if") || mustHave("keyword", "while")) {
+    if (mustHave("keyword", "let") || mustHave("keyword", "do") || 
+        mustHave("keyword", "return") || mustHave("keyword", "if") || 
+        mustHave("keyword", "while")) {
         newTree->addChild(compileStatements());
     }
 
@@ -339,57 +341,64 @@ ParseTree* CompilerParser::compileExpressionList() {
 }
 
 void CompilerParser::next() {
-    if (!tokens.empty()) {
-        tokens.pop_front();
-    }
+  // check if token list isn't empty
+  if (!tokens.empty()) {
+    // go to the next element
+    tokens.pop_front();
+  }
 }
 
-
-Token* CompilerParser::current(){
-    if (!tokens.empty()) {
-        return tokens.front();
-    }
-    return nullptr;
+Token* CompilerParser::current() {
+  // check if token list isn't empty
+  if (!tokens.empty()) {
+    // go to the front element
+    return tokens.front();
+  }
+  return nullptr;
 }
 
 
 bool CompilerParser::have(std::string expectedType, std::string expectedValue) {
-    if (!tokens.empty()) {
-        Token* currentToken = current();
-
-        if (currentToken->getType() == expectedType &&
-            currentToken->getValue() == expectedValue) {
-            return true;
-
-        } else if (currentToken->getType() == expectedType) {
-            return true;
-        }
+  // check if token list isn't empty
+  if (!tokens.empty()) {
+    // go to the current token
+    Token* currentToken = current();
+    // if current token == type AND value
+    if (currentToken->getType() == expectedType &&
+        currentToken->getValue() == expectedValue) {
+      return true;
+      // if current token == type
+    } else if (currentToken->getType() == expectedType) {
+      return true;
     }
-
-    return false;
+  }
+  // if current token != type AND/OR value
+  return false;
 }
 
 bool CompilerParser::mustHave(std::string expectedType, std::string expectedValue) {
-
-     if (!tokens.empty()) {
-        Token* currentToken = current();
-
-        if (currentToken->getType() == expectedType && currentToken->getValue() == expectedValue) {
-            return true;
-        }
+  // check if token list isn't empty
+  if (!tokens.empty()) {
+    // go to the current token
+    Token* currentToken = current();
+    // if current token == type AND value
+    if (currentToken->getType() == expectedType &&
+        currentToken->getValue() == expectedValue) {
+      return true;
     }
+  }
+  // if current token != type AND/OR value
   return false;
 }
 
 Token* CompilerParser::mustBe(std::string expectedType, std::string expectedValue) {
-    if (mustHave(expectedType, expectedValue)) {
-        Token* currentToken = current();
-        next();
-        return currentToken;
-    }
+  if (have(expectedType, expectedValue)) {
+    Token* currentToken = current();
+    next();
+    return currentToken;
+  }
   throw ParseException();
 }
-
 
 const char* ParseException::what() const noexcept {
     return "An exception occurred while parsing!";
