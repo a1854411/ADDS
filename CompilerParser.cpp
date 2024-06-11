@@ -6,7 +6,10 @@ CompilerParser::CompilerParser(std::list<Token*> tokens) {
 
 
 ParseTree* CompilerParser::compileProgram() {
-    return compileClass();
+    if (!mustHave("keyword", "class")) {
+        throw ParseException();
+    }
+  return compileClass();
 }
 
 ParseTree* CompilerParser::compileClass() {
