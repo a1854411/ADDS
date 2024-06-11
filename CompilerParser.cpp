@@ -831,10 +831,6 @@ Token* CompilerParser::mustBe(std::string expectedType,
   throw ParseException();
 }
 
-/**
- * Definition of a ParseException
- * You can use this ParseException with `throw ParseException();`
- */
-const char* ParseException::what() {
-  return "An Exception occurred while parsing!";
+const char* ParseException::what() const noexcept {
+    return "An exception occurred while parsing!";
 }
