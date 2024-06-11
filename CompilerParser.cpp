@@ -29,16 +29,18 @@ ParseTree* CompilerParser::compileClass() {
 ParseTree* CompilerParser::compileClassVarDec() {
     ParseTree* newTree = new ParseTree("classVarDec", "");
 
-    // get static or field
-    if(have("keyword", "static")){
-        newTree->addChild(new ParseTree("keyword", mustBe("keyword", "static")->getValue()));
-    }
-    else if(have("keyword", "field")){
-        newTree->addChild(new ParseTree("keyword", mustBe("keyword", "field")->getValue()));
-    }
-    else{
-        throw ParseException();
-    }
+    // // get static or field
+    // if(have("keyword", "static")){
+    //     newTree->addChild(new ParseTree("keyword", mustBe("keyword", "static")->getValue()));
+    // }
+    // else if(have("keyword", "field")){
+    //     newTree->addChild(new ParseTree("keyword", mustBe("keyword", "field")->getValue()));
+    // }
+    // else{
+    //     throw ParseException();
+    // }
+
+    newTree->addChild(new ParseTree("keyword", mustBe("keyword", "")->getValue()));
 
     //get type 
     newTree->addChild(new ParseTree("keyword", mustBe("keyword", "")->getValue()));
@@ -46,13 +48,13 @@ ParseTree* CompilerParser::compileClassVarDec() {
     //get variable name
     newTree->addChild(new ParseTree("identifier", mustBe("identifier", "")->getValue()));
 
-    while (have("symbol", ",")) {
-        newTree->addChild(new ParseTree("symbol", mustBe("symbol", ",")->getValue()));
-        newTree->addChild(new ParseTree("identifier", mustBe("identifier", "")->getValue()));
-    }
+    // while (have("symbol", ",")) {
+    //     newTree->addChild(new ParseTree("symbol", mustBe("symbol", ",")->getValue()));
+    //     newTree->addChild(new ParseTree("identifier", mustBe("identifier", "")->getValue()));
+    // }
 
     newTree->addChild(new ParseTree("symbol", mustBe("symbol", ";")->getValue()));
-    
+
     return newTree;
 }
 
@@ -138,19 +140,19 @@ ParseTree* CompilerParser::compileStatements() {
 ParseTree* CompilerParser::compileLet() {
     ParseTree* newTree = new ParseTree("letStatement", "");
 
-    newTree->addChild(new ParseTree("keyword", mustBe("keyword", "let")->getValue()));
+    newTree->addChild(mustBe("keyword", "let"));
 
-    newTree->addChild(new ParseTree("identifier", mustBe("identifier", "")->getValue()));
+    newTree->addChild(mustBe("identifier", ""));
 
-    if (have("symbol", "[")) {
-        newTree->addChild(new ParseTree("symbol", mustBe("symbol", "[")->getValue()));
-        newTree->addChild(compileExpression());
-        newTree->addChild(new ParseTree("symbol", mustBe("symbol", "]")->getValue()));
-    }
+    // if (have("symbol", "[")) {
+    //     newTree->addChild(new ParseTree("symbol", mustBe("symbol", "[")->getValue()));
+    //     newTree->addChild(compileExpression());
+    //     newTree->addChild(new ParseTree("symbol", mustBe("symbol", "]")->getValue()));
+    // }
 
-    newTree->addChild(new ParseTree("symbol", mustBe("symbol", "=")->getValue()));
+    newTree->addChild(mustBe("symbol", "="));
     newTree->addChild(compileExpression());
-    newTree->addChild(new ParseTree("symbol", mustBe("symbol", ";")->getValue()));
+    newTree->addChild(mustBe("symbol", ";"));
 
     return newTree;
 }
