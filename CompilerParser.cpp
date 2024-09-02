@@ -343,7 +343,7 @@ ParseTree* CompilerParser::compileExpressionList() {
         newTree->addChild(compileExpression());
     }
     return newTree;
-}
+} 
 
 void CompilerParser::next() {
   // check if token list isn't empty
